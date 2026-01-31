@@ -5,14 +5,14 @@ const {
   placeOrder,
   getMyOrders,
   getAllOrders,
-  updateOrderStatus,
+  updateOrderStatus
 } = require("../controllers/orderController");
 
 const { protect, isAdmin } = require("../middleware/authMiddleware");
 
 // USER ROUTES
-router.post("/place", protect, placeOrder);
-router.get("/my", protect, getMyOrders);
+router.post("/", protect, placeOrder);      // ✅ POST /api/orders
+router.get("/my", protect, getMyOrders);    // GET /api/orders/my
 
 // ADMIN ROUTES
 router.get("/admin", protect, isAdmin, getAllOrders);
